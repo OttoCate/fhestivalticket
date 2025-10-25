@@ -1,0 +1,29 @@
+{
+  "name": "chainfestival-fhevm-hardhat",
+  "private": true,
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf cache artifacts typechain",
+    "build": "hardhat compile",
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "node": "hardhat node",
+    "deploy:localhost": "hardhat run --network localhost deploy/deploy_festival.ts",
+    "deploy:sepolia": "hardhat run --network sepolia deploy/deploy_festival.ts"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@types/node": "^20.11.30",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.7",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@fhevm/solidity": "^0.8.0",
+    "@openzeppelin/contracts": "^5.0.2",
+    "@zama-fhe/oracle-solidity": "^0.1.0"
+  }
+}
