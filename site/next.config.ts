@@ -1,17 +1,17 @@
 import type { NextConfig } from "next";
 
+const isGithubActions = process.env.GITHUB_ACTIONS === "true";
+const repo = "fhestivalticket";
+const basePath = isGithubActions ? `/${repo}` : "";
+const assetPrefix = isGithubActions ? `/${repo}/` : undefined;
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  // Static export for GitHub Pages
   output: "export",
-  // Project pages path
-  basePath: "/fhestivalticket",
-  assetPrefix: "/fhestivalticket/",
+  images: { unoptimized: true },
   trailingSlash: true,
-  // Expose base path to client
-  env: {
-    NEXT_PUBLIC_BASE_PATH: "/fhestivalticket",
-  },
+  basePath,
+  assetPrefix,
   async headers() {
     return [
       {

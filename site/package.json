@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",
+    "export": "next build",
     "start": "next start",
-    "export": "next export",
     "genabi": "node scripts/genabi.mjs"
   },
   "dependencies": {
