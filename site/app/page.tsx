@@ -66,13 +66,13 @@ async function ensureLodash() {
 
 // Add helper classes/functions from template (simplified):
 class FhevmDecryptionSignature {
-  publicKey: string;
-  privateKey: string;
-  signature: string;
-  contractAddresses: `0x${string}`[];
-  userAddress: `0x${string}`;
-  startTimestamp: number;
-  durationDays: number;
+  publicKey!: string;
+  privateKey!: string;
+  signature!: string;
+  contractAddresses!: `0x${string}`[];
+  userAddress!: `0x${string}`;
+  startTimestamp!: number;
+  durationDays!: number;
 
   constructor(params: {
     publicKey: string;
@@ -132,7 +132,8 @@ export default function Page() {
       const net = chainId === 11155111 ? "sepolia" : chainId === 31337 ? "localhost" : undefined;
       if (!net) return;
       try {
-        const res = await fetch(`/abi/${net}/FestivalRegistry.json`);
+        const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
+        const res = await fetch(`${BASE}/abi/${net}/FestivalRegistry.json`);
         if (res.ok) {
           const json = await res.json();
           if (json?.abi && json?.address) {

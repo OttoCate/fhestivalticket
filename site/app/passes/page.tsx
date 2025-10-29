@@ -67,7 +67,8 @@ export default function PassesPage() {
       const net = chainId === 11155111 ? "sepolia" : chainId === 31337 ? "localhost" : undefined;
       if (!net) return;
       try {
-        const res = await fetch(`/abi/${net}/FestivalRegistry.json`);
+        const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
+        const res = await fetch(`${BASE}/abi/${net}/FestivalRegistry.json`);
         if (res.ok) {
           const json = await res.json();
           setRegistry(json?.address ?? "");
